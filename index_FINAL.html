@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08150f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Lifestyle OS</title>
+<style>
+:root{
+ --bg:#07140f;--panel:#0e2119;--panel2:#132b21;--text:#f2faf6;--muted:#91aaa0;
+ --line:#234238;--green:#21bd7e;--green2:#0b7b51;--soft:#173c2d;
+ --blue:#4b8df8;--purple:#9a73ee;--gold:#e5ae3d;--pink:#e96d9d;--red:#ed6a6a;
+ --shadow:0 20px 55px rgba(0,0,0,.22)
+}
+body.light{
+ --bg:#f3f8f5;--panel:#fff;--panel2:#edf6f1;--text:#10221a;--muted:#6f827a;
+ --line:#d9e7e0;--green:#149f68;--green2:#08764d;--soft:#dff5ea;
+ --shadow:0 18px 45px rgba(22,62,47,.08)
+}
+*{box-sizing:border-box}
+body{margin:0;background:
+ radial-gradient(circle at 90% 0,#123d2b 0,transparent 28%),
+ radial-gradient(circle at 5% 80%,#172f58 0,transparent 20%),
+ var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:260px;padding:22px 16px;background:rgba(7,20,15,.92);border-right:1px solid #ffffff12;z-index:10;display:flex;flex-direction:column}
+body.light .sidebar{background:rgba(255,255,255,.94);border-right-color:var(--line)}
+.brand{display:flex;gap:12px;align-items:center;padding:6px 8px 26px}.logo{width:44px;height:44px;border-radius:15px;background:linear-gradient(135deg,#31d994,#08754e);display:grid;place-items:center;font-weight:900;font-size:21px;box-shadow:0 10px 30px #16a06b40}.brand b{font-size:19px}.brand small{display:block;color:#7f9e91;margin-top:2px}
+.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#8da79d;padding:11px 12px;border-radius:13px;text-align:left;display:flex;gap:11px;align-items:center;font-weight:700}.nav button.active,.nav button:hover{background:#ffffff0e;color:#fff}.nav span{width:23px;text-align:center;font-size:17px}
+body.light .nav button{color:#657970}.body.light .nav button.active,.body.light .nav button:hover{color:#075b3e;background:#e9f6f0}
+.sidebottom{margin-top:auto;color:#718d82;font-size:11px}.theme{width:100%;padding:11px;border:1px solid #ffffff12;border-radius:13px;background:#ffffff08;color:inherit}
+body.light .theme{background:#edf6f1;color:#245745;border-color:var(--line)}
+.main{margin-left:260px;padding:26px 30px 70px;max-width:1600px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:900}.top h1{margin:5px 0 0;font-size:29px;letter-spacing:-.04em}.avatar{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#d9f7e9,#9be3c3);color:#08754d;font-weight:900;border:3px solid #fff}
+.page{display:none}.page.active{display:block}
+.hero{position:relative;overflow:hidden;min-height:205px;border:1px solid #ffffff10;border-radius:28px;padding:28px;background:linear-gradient(125deg,#07140f,#0a4f37 58%,#17a76d);box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-80px;top:-80px;background:#ffffff12}.hero h2{font-size:35px;line-height:1.03;letter-spacing:-.055em;margin:7px 0 10px;max-width:650px;position:relative;z-index:2}.hero p{max-width:650px;color:#d0eee1;line-height:1.55;margin:0;position:relative;z-index:2}.hero .date{color:#9fe4c3;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:2}.hero-actions{display:flex;gap:9px;margin-top:18px;position:relative;z-index:3}.primary,.secondary{border-radius:12px;padding:11px 15px;font-weight:850}.primary{background:#fff;color:#08754d}.secondary{background:#ffffff14;color:#fff;border:1px solid #ffffff1c}
+.visual{position:absolute;right:8px;bottom:-5px;width:330px;height:215px;z-index:1}.visual svg{width:100%;height:100%}
+.grid{display:grid;gap:15px}.stats{grid-template-columns:repeat(4,1fr);margin:16px 0}.two{grid-template-columns:1.15fr .85fr}.three{grid-template-columns:repeat(3,1fr)}.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:19px;box-shadow:var(--shadow)}.stat{min-height:112px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:29px;margin:8px 0 2px}.accent{border-left:4px solid var(--green)}.blue{border-left:4px solid var(--blue)}.purple{border-left:4px solid var(--purple)}.gold{border-left:4px solid var(--gold)}.pink{border-left:4px solid var(--pink)}
+.head{display:flex;justify-content:space-between;align-items:center;margin:0 0 13px}.head h3{margin:0;font-size:18px}.head small{color:var(--muted)}
+.list{display:grid;gap:9px}.item{display:flex;gap:11px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:15px;background:var(--panel2)}.item-main{flex:1;min-width:0}.item-main b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.item-main small{color:var(--muted)}.dot{width:10px;height:10px;border-radius:50%;background:var(--green);flex:none}.check{width:22px;height:22px;border-radius:7px;border:2px solid #547568;background:transparent}.check.done{background:var(--green);border-color:var(--green)}.check.done:after{content:"✓";color:#fff;font-size:14px;position:relative;left:3px;top:-2px}
+.progress{height:8px;background:#20362d;border-radius:99px;overflow:hidden}.light .progress{background:#e5eee9}.progress i{display:block;height:100%;background:linear-gradient(90deg,#16a66d,#63dca9);border-radius:99px}
+.money{font-size:29px;font-weight:900;letter-spacing:-.04em}.muted{color:var(--muted)}.pill{display:inline-block;padding:6px 9px;border-radius:99px;background:var(--soft);color:var(--green);font-size:10px;font-weight:900}
+.toolbar{display:flex;gap:9px;margin:16px 0;flex-wrap:wrap}.field{padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text);outline:0}.toolbar .field{min-width:180px}
+.form{display:grid;gap:12px}.form label{display:grid;gap:6px;color:var(--muted);font-size:12px;font-weight:750}.form input,.form select,.form textarea{padding:11px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--text)}
+.modal{position:fixed;inset:0;background:#0009;backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:18px;z-index:30}.modal.show{display:flex}.sheet{width:min(560px,100%);background:var(--panel);border:1px solid var(--line);border-radius:25px;padding:22px;max-height:90vh;overflow:auto}.sheet h3{margin:0 0 16px;font-size:23px}.close{float:right;border:0;border-radius:10px;padding:7px 11px;background:var(--panel2);color:var(--text)}.save{border:0;border-radius:12px;padding:11px 15px;background:var(--green);color:#fff;font-weight:850;margin-top:4px}
+.empty{text-align:center;color:var(--muted);padding:28px}.empty b{display:block;color:var(--text);margin-bottom:4px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.calhead{text-align:center;color:var(--muted);font-size:10px;font-weight:800;padding:5px}.day{min-height:72px;border:1px solid var(--line);border-radius:12px;padding:7px;background:var(--panel2);font-size:11px}.day.today{border:2px solid var(--green)}.event{margin-top:6px;padding:4px 5px;border-radius:6px;background:var(--soft);color:var(--green);font-size:9px}
+.accounts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px 0}.account{min-height:155px;border-radius:23px;padding:20px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow)}.bred{background:linear-gradient(135deg,#12392b,#0a8d5d)}.revolut{background:linear-gradient(135deg,#232650,#5c5fc4)}.account small{opacity:.7}.account .label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:850;opacity:.8}.account b{display:block;font-size:15px;margin-top:4px}.account .balance{font-size:31px;margin-top:26px;letter-spacing:-.04em}.account:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff22;border-radius:50%;right:-35px;bottom:-80px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.kpi{padding:15px;border:1px solid var(--line);border-radius:17px;background:var(--panel2)}.kpi small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.kpi b{display:block;font-size:21px;margin-top:5px}.finance-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:15px}.budget{padding:11px 0;border-top:1px solid var(--line)}.budget:first-child{border-top:0}.budgettop{display:flex;justify-content:space-between;font-size:12px;font-weight:750;margin-bottom:7px}.bar{height:8px;background:#1d342a;border-radius:99px;overflow:hidden}.light .bar{background:#e5eee9}.bar i{display:block;height:100%;background:linear-gradient(90deg,#18b67a,#6be0b0)}
+.mobile{display:none}
+@media(max-width:850px){
+ .sidebar{display:none}.main{margin:0;padding:16px 14px 94px}.top h1{font-size:25px}.stats{grid-template-columns:repeat(2,1fr)}.two,.three,.accounts,.finance-layout{grid-template-columns:1fr}.kpis{grid-template-columns:1fr}.hero{min-height:225px;padding:22px;border-radius:24px}.hero h2{font-size:29px;max-width:72%}.hero p{max-width:72%}.visual{width:210px;height:145px;right:-20px;bottom:-3px;opacity:.8}.mobile{display:flex;position:fixed;left:9px;right:9px;bottom:9px;height:66px;background:#07140fee;border:1px solid #ffffff12;border-radius:21px;z-index:20;align-items:center;justify-content:space-around;backdrop-filter:blur(18px)}.light .mobile{background:#ffffffeF;border-color:var(--line)}.mobile button{background:transparent;border:0;color:#89a49a;font-size:9px;font-weight:800;display:grid;place-items:center;gap:3px}.mobile button b{font-size:18px}.mobile button.active{color:#54d89f}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+ <div class="brand"><div class="logo">L</div><div><b>Lifestyle OS</b><small>Personal life management</small></div></div>
+ <nav class="nav" id="nav"></nav>
+ <div class="sidebottom"><button class="theme" id="theme">☀ Mode clair</button><p>Local-first · Version finale</p></div>
+</aside>
+<main class="main">
+ <header class="top"><div><div class="eyebrow">TON ESPACE PERSONNEL</div><h1 id="title">Bonjour 👋</h1></div><div class="avatar">A</div></header>
+ <div id="pages"></div>
+</main>
+</div>
+<nav class="mobile" id="mobile"></nav>
+<div class="modal" id="modal"><div class="sheet"><button class="close" onclick="closeModal()">×</button><h3 id="modalTitle"></h3><div id="modalBody"></div></div></div>
+
+<script>
+(function(){
+"use strict";
+const KEY="LifestyleOS_Final_2026";
+const $=id=>document.getElementById(id);
+let state;
+try{state=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){state={}};
+state.tasks=Array.isArray(state.tasks)?state.tasks:[];
+state.goals=Array.isArray(state.goals)?state.goals:[];
+state.events=Array.isArray(state.events)?state.events:[];
+state.expenses=Array.isArray(state.expenses)?state.expenses:[];
+state.leisure=Array.isArray(state.leisure)?state.leisure:[];
+state.contacts=Array.isArray(state.contacts)?state.contacts:[];
+state.spirit=Array.isArray(state.spirit)?state.spirit:[];
+state.docs=Array.isArray(state.docs)?state.docs:[];
+const income=1119,bred=600,revolut=519;
+const nav=[
+ ["home","⌂","Accueil"],["tasks","✓","Tâches"],["goals","◎","Objectifs"],["agenda","▣","Agenda"],
+ ["finance","€","Finances"],["career","▤","Carrière"],["health","♡","Santé"],["leisure","✦","Loisirs"],
+ ["social","♧","Vie sociale"],["spirit","✧","Spiritualité"],["docs","▱","Documents"]
+];
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]))}
+function euro(v){return Number(v||0).toLocaleString("fr-FR",{minimumFractionDigits:2,maximumFractionDigits:2})+" €"}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderCurrent()}
+function theme(){
+ const light=!document.body.classList.contains("light");
+ document.body.classList.toggle("light",light);localStorage.setItem("LifestyleOS_theme",light?"light":"dark");
+ $("theme").textContent=light?"☾ Mode sombre":"☀ Mode clair";
+}
+function buildNav(){
+ $("nav").innerHTML=nav.map(x=>`<button data-go="${x[0]}" onclick="go('${x[0]}')"><span>${x[1]}</span>${x[2]}</button>`).join("");
+ $("mobile").innerHTML=nav.slice(0,5).map(x=>`<button data-go="${x[0]}" onclick="go('${x[0]}')"><b>${x[1]}</b>${x[2]}</button>`).join("");
+}
+function go(id){
+ render(id);
+ document.querySelectorAll("[data-go]").forEach(b=>b.classList.toggle("active",b.dataset.go===id));
+ $("title").textContent=id==="home"?"Bonjour 👋":(nav.find(x=>x[0]===id)||["","","Lifestyle OS"])[2];
+ window.scrollTo(0,0);
+}
+function shell(id,content){$("pages").innerHTML=`<section class="page active" id="page-${id}">${content}</section>`}
+function hero(kicker,title,text,buttons,visual=true){
+ return `<div class="hero"><div class="date">${kicker}</div><h2>${title}</h2><p>${text}</p><div class="hero-actions">${buttons||""}</div>${visual?`<div class="visual"><svg viewBox="0 0 330 215"><circle cx="258" cy="61" r="58" fill="#ffffff12"/><circle cx="302" cy="146" r="38" fill="#7ce4b322"/><path d="M15 186 C78 142 118 170 166 130 C214 91 245 111 320 58" fill="none" stroke="#ffffff38" stroke-width="2"/><rect x="164" y="57" width="103" height="70" rx="18" fill="#ffffff14" stroke="#ffffff2a"/><path d="M181 103 C198 90 211 110 227 94 C243 78 253 91 262 73" fill="none" stroke="#9ff1cc" stroke-width="4" stroke-linecap="round"/><circle cx="262" cy="73" r="5" fill="#fff"/><circle cx="68" cy="116" r="31" fill="#ffffff12" stroke="#ffffff2b"/><path d="M52 117l11 11 22-29" fill="none" stroke="#b6f5d7" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`:""}</div>`
+}
+function home(){
+ const open=state.tasks.filter(x=>!x.done).length, done=state.tasks.filter(x=>x.done).length,total=state.expenses.reduce((a,x)=>a+Number(x.amount||0),0);
+ shell("home",hero("Cockpit personnel","Tout ce qui compte, au même endroit.","Organise tes journées, suis tes objectifs, ton budget, ta santé et tes projets.",`<button class="primary" onclick="openModal('task')">＋ Nouvelle tâche</button><button class="secondary" onclick="openModal('goal')">＋ Objectif</button>`)+
+ `<div class="grid stats">
+ <div class="card stat accent"><small>Tâches ouvertes</small><strong>${open}</strong><small>${done} terminée(s)</small></div>
+ <div class="card stat blue"><small>Objectifs</small><strong>${state.goals.length}</strong><small>en cours</small></div>
+ <div class="card stat gold"><small>Dépenses</small><strong>${state.expenses.length}</strong><small>${euro(total)}</small></div>
+ <div class="card stat purple"><small>Documents</small><strong>${state.docs.length}</strong><small>références</small></div></div>
+ <div class="grid two">
+ <div class="card"><div class="head"><h3>À faire</h3><small>Aujourd’hui</small></div><div class="list">${state.tasks.slice(-5).reverse().map(task).join("")||empty("Aucune tâche","Ajoute ta première priorité.")}</div></div>
+ <div class="card"><div class="head"><h3>Objectifs</h3><small>Progression</small></div><div class="list">${state.goals.slice(-4).reverse().map(goalItem).join("")||empty("Aucun objectif","Définis une direction.")}</div></div></div>
+ <div class="grid three" style="margin-top:15px">
+ <div class="card accent"><span class="pill">Finances</span><div class="money" style="margin-top:12px">${euro(income-total)}</div><small class="muted">Disponible théorique</small></div>
+ <div class="card blue"><span class="pill">Sport</span><div class="money" style="margin-top:12px">${state.leisure.filter(x=>x.type==="Sport").length}</div><small class="muted">activités sportives</small></div>
+ <div class="card purple"><span class="pill">Spiritualité</span><div class="money" style="margin-top:12px">${state.spirit.length}</div><small class="muted">moments enregistrés</small></div></div>`);
+}
+function task(t){return `<div class="item"><button class="check ${t.done?"done":""}" onclick="toggleTask('${t.id}')"></button><div class="item-main"><b>${esc(t.title)}</b><small>${esc(t.date||"Aujourd’hui")} · ${esc(t.priority||"Normal")}</small></div><button style="border:0;background:none;color:var(--muted)" onclick="removeItem('tasks','${t.id}')">×</button></div>`}
+function goalItem(g){return `<div class="item"><div class="dot" style="background:${g.color||"var(--green)"}"></div><div class="item-main"><b>${esc(g.title)}</b><small>${g.progress||0}%</small><div class="progress" style="margin-top:7px"><i style="width:${Math.min(100,g.progress||0)}%"></i></div></div></div>`}
+function empty(a,b){return `<div class="empty"><b>${a}</b>${b}</div>`}
+function tasks(){
+ shell("tasks",hero("Productivité","Tâches","Des priorités claires, sans surcharge.",`<button class="primary" onclick="openModal('task')">＋ Ajouter une tâche</button>`)+
+ `<div class="toolbar"><input id="searchTask" class="field" placeholder="Rechercher…" oninput="renderTasks()"><select id="filterTask" class="field" onchange="renderTasks()"><option value="all">Toutes</option><option value="open">À faire</option><option value="done">Terminées</option></select></div><div class="card"><div id="taskList" class="list"></div></div>`);
+ renderTasks();
+}
+function renderTasks(){
+ const q=($("searchTask")?.value||"").toLowerCase(),f=$("filterTask")?.value||"all";
+ const arr=state.tasks.filter(t=>(f==="all"||(f==="done"?t.done:!t.done))&&String(t.title).toLowerCase().includes(q));
+ $("taskList").innerHTML=arr.map(task).join("")||empty("Aucune tâche","Ajoute quelque chose à faire.");
+}
+function goals(){
+ shell("goals",hero("Direction","Objectifs","Transforme tes intentions en progression visible.",`<button class="primary" onclick="openModal('goal')">＋ Nouvel objectif</button>`)+
+ `<div class="grid three" style="margin-top:15px">${state.goals.map(g=>`<div class="card accent"><span class="pill">Objectif</span><h3>${esc(g.title)}</h3><p class="muted">${esc(g.desc||"")}</p><div style="display:flex;justify-content:space-between;font-size:12px;margin:15px 0 7px"><span>Progression</span><b>${g.progress||0}%</b></div><div class="progress"><i style="width:${Math.min(100,g.progress||0)}%"></i></div><div style="margin-top:12px"><button class="secondary" style="background:var(--soft);color:var(--green);border:0" onclick="incGoal('${g.id}')">+10%</button> <button class="secondary" style="background:#4d2028;color:#ff9ba9;border:0" onclick="removeItem('goals','${g.id}')">Supprimer</button></div></div>`).join("")||empty("Aucun objectif","Ajoute ton premier objectif.")}</div>`);
+}
+function agenda(){
+ const now=new Date(),y=now.getFullYear(),m=now.getMonth(),days=new Date(y,m+1,0).getDate(),offset=(new Date(y,m,1).getDay()+6)%7;
+ let c=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"].map(x=>`<div class="calhead">${x}</div>`).join("");
+ for(let i=0;i<offset;i++)c+="<div></div>";
+ for(let d=1;d<=days;d++){let iso=`${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`,ev=state.events.filter(e=>e.date===iso);c+=`<div class="day ${d===now.getDate()?"today":""}"><b>${d}</b>${ev.slice(0,2).map(e=>`<div class="event">${esc(e.title)}</div>`).join("")}</div>`}
+ shell("agenda",hero("Planification","Agenda","Une vue simple de tes rendez-vous et événements.",`<button class="primary" onclick="openModal('event')">＋ Événement</button>`)+`<div class="card" style="margin-top:15px"><div class="head"><h3>${now.toLocaleDateString("fr-FR",{month:"long",year:"numeric"})}</h3></div><div class="calendar">${c}</div></div>`);
+}
+function finance(){
+ const total=state.expenses.reduce((a,x)=>a+Number(x.amount||0),0),remain=income-total;
+ const cats=["Loyer","Assurance voiture","Crédit voiture","Salle de sport","Amazon","Carburant","Courses","Frais bancaires","Autres dépenses","Investissements"],amt={};
+ cats.forEach(c=>amt[c]=0);state.expenses.forEach(x=>{if(amt[x.category]!==undefined)amt[x.category]+=Number(x.amount)||0});
+ const max=Math.max(1,...Object.values(amt));
+ shell("finance",hero("Pilotage financier","Finances","Une vision claire de tes comptes, ton budget et tes dépenses.",`<button class="primary" onclick="openModal('expense')">＋ Ajouter une dépense</button>`)+
+ `<div class="accounts"><div class="account bred"><div class="label">Compte principal</div><b>BRED · Charges & épargne</b><div class="balance">${euro(bred)}</div><small>Réserve de référence</small></div><div class="account revolut"><div class="label">Compte quotidien</div><b>Revolut · Quotidien & investissements</b><div class="balance">${euro(revolut)}</div><small>Budget transféré de référence</small></div></div>
+ <div class="kpis"><div class="kpi"><small>Revenus</small><b>${euro(income)}</b></div><div class="kpi"><small>Dépenses</small><b>${euro(total)}</b></div><div class="kpi"><small>Disponible</small><b>${euro(remain)}</b></div></div>
+ <div class="finance-layout"><div class="card"><div class="head"><h3>Budget par catégorie</h3><small>Suivi</small></div>${cats.map(c=>`<div class="budget"><div class="budgettop"><span>${c}</span><span>${euro(amt[c])}</span></div><div class="bar"><i style="width:${Math.min(100,amt[c]/max*100)}%"></i></div></div>`).join("")}</div>
+ <div class="card"><div class="head"><h3>Dépenses récentes</h3><small>${state.expenses.length}</small></div><div class="list">${state.expenses.slice(-8).reverse().map(x=>`<div class="item"><div class="dot" style="background:var(--gold)"></div><div class="item-main"><b>${esc(x.label)}</b><small>${esc(x.category)}</small></div><strong>− ${euro(x.amount)}</strong><button style="border:0;background:none;color:var(--muted)" onclick="removeItem('expenses','${x.id}')">×</button></div>`).join("")||empty("Aucune dépense","Ton suivi est vide.")}</div></div></div>`);
+}
+function simplePage(id,k,title,text,button,body){
+ shell(id,hero(k,title,text,button)+`<div style="margin-top:15px">${body}</div>`);
+}
+function career(){simplePage("career","Professionnel","Carrière","Centralise tes formations, candidatures et prochaines étapes.","",`<div class="grid two"><div class="card accent"><span class="pill">Formation</span><h3>BTS Comptabilité & Gestion</h3><p class="muted">Suivi de parcours, cours et échéances.</p><div class="progress"><i style="width:35%"></i></div></div><div class="card blue"><span class="pill">Emploi</span><h3>Projet professionnel</h3><p class="muted">Candidatures, contacts et documents.</p></div></div>`)}
+function health(){simplePage("health","Bien-être","Santé","Un espace pour suivre tes habitudes et tes indicateurs personnels.","",`<div class="grid three"><div class="card accent"><span class="pill">Corps</span><h3>Poids & mensurations</h3><p class="muted">Ajoute tes mesures régulièrement.</p></div><div class="card blue"><span class="pill">Sommeil</span><h3>Routine</h3><p class="muted">Sommeil et niveau d’énergie.</p></div><div class="card purple"><span class="pill">Habitudes</span><h3>Suivi quotidien</h3><p class="muted">Hydratation, repas, récupération.</p></div></div>`)}
+function leisure(){shell("leisure",hero("Plaisir","Loisirs","Garde une place pour apprendre, bouger et profiter.",`<button class="primary" onclick="openModal('leisure')">＋ Activité</button>`)+`<div class="grid three" style="margin-top:15px">${state.leisure.map(x=>`<div class="card blue"><span class="pill">${esc(x.type)}</span><h3>${esc(x.name)}</h3><p class="muted">${esc(x.note||"")}</p></div>`).join("")||empty("Aucun loisir","Ajoute une activité.")}</div>`)}
+function social(){shell("social",hero("Relations","Vie sociale","Entretiens les relations importantes.",`<button class="primary" onclick="openModal('contact')">＋ Contact</button>`)+`<div class="card" style="margin-top:15px"><div class="list">${state.contacts.map(x=>`<div class="item"><div class="dot" style="background:var(--pink)"></div><div class="item-main"><b>${esc(x.name)}</b><small>${esc(x.note||"")}</small></div></div>`).join("")||empty("Aucun contact","Ajoute une personne importante.")}</div></div>`)}
+function spirit(){shell("spirit",hero("Intérieur","Spiritualité","Un espace personnel pour prière, Bible, gratitude et réflexion.",`<button class="primary" onclick="openModal('spirit')">＋ Moment</button>`)+`<div class="grid three" style="margin-top:15px"><div class="card purple"><span class="pill">Moments</span><h3>${state.spirit.length}</h3><p class="muted">moments enregistrés</p></div><div class="card accent"><span class="pill">Intention</span><h3>Grandir dans la foi</h3><p class="muted">Petites habitudes, constance et réflexion.</p></div><div class="card gold"><span class="pill">Gratitude</span><h3>Garder une trace</h3><p class="muted">Quelques mots chaque fois que tu le souhaites.</p></div></div>`)}
+function docs(){shell("docs",hero("Bibliothèque","Documents","Centralise les références de tes documents importants.","")+`<div class="card" style="margin-top:15px"><div class="toolbar"><input id="docInput" class="field" placeholder="Nom du document"><button class="primary" onclick="addDoc()">＋ Ajouter</button></div><div class="list">${state.docs.map(x=>`<div class="item"><div class="dot" style="background:var(--purple)"></div><div class="item-main"><b>${esc(x.name)}</b><small>${esc(x.date)}</small></div></div>`).join("")||empty("Aucun document","Ajoute une référence.")}</div></div>`)}
+function render(id){if(id==="home")home();else if(id==="tasks")tasks();else if(id==="goals")goals();else if(id==="agenda")agenda();else if(id==="finance")finance();else if(id==="career")career();else if(id==="health")health();else if(id==="leisure")leisure();else if(id==="social")social();else if(id==="spirit")spirit();else docs()}
+function renderCurrent(){const active=document.querySelector(".nav button.active");render(active?active.dataset.go:"home")}
+function toggleTask(i){const t=state.tasks.find(x=>x.id===i);if(t)t.done=!t.done;save()}
+function incGoal(i){const g=state.goals.find(x=>x.id===i);if(g)g.progress=Math.min(100,(g.progress||0)+10);save()}
+function removeItem(k,i){state[k]=state[k].filter(x=>x.id!==i);save()}
+function addDoc(){const n=$("docInput").value.trim();if(!n)return;state.docs.push({id:uid(),name:n,date:new Date().toLocaleDateString("fr-FR")});save()}
+const modalFields={
+ task:`<div class="form"><label>Tâche<input id="f1" placeholder="Ex. Faire une séance de sport"></label><label>Date<input id="f2" type="date"></label><label>Priorité<select id="f3"><option>Normal</option><option>Important</option><option>Urgent</option></select></label></div>`,
+ goal:`<div class="form"><label>Objectif<input id="f1" placeholder="Ex. Obtenir mon BTS"></label><label>Description<textarea id="f2" rows="3"></textarea></label><label>Progression (%)<input id="f3" type="number" min="0" max="100" value="0"></label></div>`,
+ event:`<div class="form"><label>Événement<input id="f1" placeholder="Ex. Rendez-vous"></label><label>Date<input id="f2" type="date"></label></div>`,
+ expense:`<div class="form"><label>Libellé<input id="f1" placeholder="Ex. Courses"></label><label>Montant (€)<input id="f2" type="number" step="0.01"></label><label>Catégorie<select id="f3"><option>Courses</option><option>Carburant</option><option>Loyer</option><option>Assurance voiture</option><option>Crédit voiture</option><option>Salle de sport</option><option>Amazon</option><option>Frais bancaires</option><option>Autres dépenses</option><option>Investissements</option></select></label></div>`,
+ leisure:`<div class="form"><label>Activité<input id="f1" placeholder="Ex. Muay Thai"></label><label>Type<select id="f2"><option>Sport</option><option>Apprentissage</option><option>Voyage</option><option>Loisir</option></select></label><label>Note<input id="f3"></label></div>`,
+ contact:`<div class="form"><label>Nom<input id="f1"></label><label>Note<textarea id="f2" rows="3"></textarea></label></div>`,
+ spirit:`<div class="form"><label>Type<select id="f1"><option>Prière</option><option>Bible</option><option>Gratitude</option><option>Méditation</option><option>Réflexion</option><option>Église</option></select></label><label>Note<textarea id="f2" rows="3"></textarea></label></div>`
+};
+function openModal(type){
+ const titles={task:"Nouvelle tâche",goal:"Nouvel objectif",event:"Nouvel événement",expense:"Nouvelle dépense",leisure:"Nouvelle activité",contact:"Nouveau contact",spirit:"Nouveau moment"};
+ $("modalTitle").textContent=titles[type];$("modalBody").innerHTML=modalFields[type]+`<button class="save" onclick="submit('${type}')">Enregistrer</button>`;$("modal").classList.add("show");
+}
+function closeModal(){$("modal").classList.remove("show")}
+function val(id){return $(id)?.value?.trim()||""}
+function submit(type){
+ if(type==="task"){if(!val("f1"))return;state.tasks.push({id:uid(),title:val("f1"),date:val("f2")||"Aujourd’hui",priority:val("f3"),done:false})}
+ if(type==="goal"){if(!val("f1"))return;state.goals.push({id:uid(),title:val("f1"),desc:val("f2"),progress:Number(val("f3"))||0})}
+ if(type==="event"){if(!val("f1"))return;state.events.push({id:uid(),title:val("f1"),date:val("f2")})}
+ if(type==="expense"){if(!val("f1")||!val("f2"))return;state.expenses.unshift({id:uid(),label:val("f1"),amount:Number(val("f2")),category:val("f3")})}
+ if(type==="leisure"){if(!val("f1"))return;state.leisure.unshift({id:uid(),name:val("f1"),type:val("f2"),note:val("f3")})}
+ if(type==="contact"){if(!val("f1"))return;state.contacts.unshift({id:uid(),name:val("f1"),note:val("f2")})}
+ if(type==="spirit"){state.spirit.unshift({id:uid(),type:val("f1"),note:val("f2"),date:new Date().toLocaleDateString("fr-FR")})}
+ closeModal();save();
+}
+$("theme").addEventListener("click",theme);
+if(localStorage.getItem("LifestyleOS_theme")==="light")document.body.classList.add("light");
+buildNav();go("home");
+})();
+</script>
+</body>
+</html>
